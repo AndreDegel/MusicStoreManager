@@ -25,6 +25,7 @@ public class SearchDatabase extends JFrame{
 
     public DatabaseController dbc = Main.db;
     public ResultSet rs;
+    public EntryValidation ev;
 
 
 
@@ -48,8 +49,7 @@ public class SearchDatabase extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 rs = dbc.selectAllAlbums();
-                SearchDataModel sdm = new SearchDataModel(rs);
-                SearchTable st = new SearchTable(sdm);
+                openSearch(rs);
 
             }
         });
@@ -57,26 +57,24 @@ public class SearchDatabase extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 rs = dbc.selectAllConsignors();
-                SearchDataModel sdm = new SearchDataModel(rs);
-                SearchTable st = new SearchTable(sdm);
+                openSearch(rs);
             }
         });
         allBasementRecordsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 rs = dbc.selectAllBasement();
-                SearchDataModel sdm = new SearchDataModel(rs);
-                SearchTable st = new SearchTable(sdm);
+                openSearch(rs);
             }
         });
         byConsignorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //open input dialog to resolve the ticket
-                int id = inputValidationID("Album");
-                rs = dbc.selectAlbumByConsignor(id);
-                SearchDataModel sdm = new SearchDataModel(rs);
-                SearchTable st = new SearchTable(sdm);
+                //open input dialog to search consigner id
+                ev = new EntryValidation();
+                ev.setOkButtonText("Search Album");
+                ev.entrySearchID("Consignor");
+
             }
         });
 
@@ -103,17 +101,15 @@ public class SearchDatabase extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String s = inputValidationString("consignor", "Last Name");
                 rs = dbc.selectConsignorByLast(s);
-                SearchDataModel sdm = new SearchDataModel(rs);
-                SearchTable st = new SearchTable(sdm);
+
             }
         });
         byIDButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = inputValidationID("Consignor");
-                rs = dbc.selectConsignorById(id);
-                SearchDataModel sdm = new SearchDataModel(rs);
-                SearchTable st = new SearchTable(sdm);
+                ev = new EntryValidation();
+                ev.setOkButtonText("Search Consignor");
+                ev.entrySearchID("Consignor");
             }
         });
     }
@@ -141,36 +137,9 @@ public class SearchDatabase extends JFrame{
         return s;
     }
 
-    public int inputValidationID(String table) {
-        //open input dialog to resolve the ticket
-        int id;
-        while (true) {
-            String s = JOptionPane.showInputDialog(
-                    null,
-                    "What is the consignors number:",
-                    "Search " + table + " by ID",
-                    JOptionPane.PLAIN_MESSAGE);
-            //If a number was returned, try to parse it out of the string and send it to the query
-            //if not ignore it
-            try {
-                id = Integer.parseInt(s);
-                //catch negative numbers
-                if (id > 0) {
-                    break;
-                }
-                else {
-                    JOptionPane.showMessageDialog(null,
-                            "The ID must be a positive number starting at 1",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                //show error message if no number entered or letter instead
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,
-                        "This is not a valid consignor number!",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        return id;
+    public void openSearch(ResultSet rst) {
+        SearchDataModel sdm = new SearchDataModel(rst);
+        SearchTable st = new SearchTable(sdm);
     }
 }
 

@@ -9,6 +9,7 @@ import java.sql.*;
 
 /**
  * Created by Andre on 4/30/2015.
+ * Class that controls the database.
  */
 
 public class DatabaseController {
@@ -22,6 +23,7 @@ public class DatabaseController {
 
     }
 
+    // Connect to the MySQL Database musicdb
     public void connect() throws Exception {
         if (conn != null) {
             return;
