@@ -180,4 +180,46 @@ public class DatabaseController {
             return null;
         }
     }
+
+    public ResultSet selectBasementByConsignor(int id) {
+        String consignorAlbum = "SELECT * FROM albums WHERE consignor = ? AND inBasement = 1";
+        try {
+            ps = conn.prepareStatement(consignorAlbum);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            return rs;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public ResultSet selectBasementBySong(String song) {
+        String songAlbum = "SELECT * FROM albums WHERE song LIKE ? AND inBasement = 1";
+        try {
+            ps = conn.prepareStatement(songAlbum);
+            ps.setString(1, song + "%");        //Search for song directly or everything similar
+            rs = ps.executeQuery();
+            return rs;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public ResultSet selectBasementByArtist(String artist) {
+        String songAlbum = "SELECT * FROM albums WHERE artist LIKE ? AND inBasement = 1";
+        try {
+            ps = conn.prepareStatement(songAlbum);
+            ps.setString(1, artist + "%");        //Search for song directly or everything similar
+            rs = ps.executeQuery();
+            return rs;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
 }

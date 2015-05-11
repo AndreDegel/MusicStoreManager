@@ -17,6 +17,7 @@ public class mainMenu extends JFrame{
         super("Music Store Main Menu");
         setContentPane(rootPanel);
         pack();
+        setSize(300, 200);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 

@@ -21,7 +21,7 @@ public class AddToDatabase extends JFrame{
         super("Add to Database");
         setContentPane(addPanel);
         pack();
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
 
 

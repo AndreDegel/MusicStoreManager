@@ -20,7 +20,7 @@ public class SearchTable extends JFrame{
     protected SearchTable(SearchDataModel sdm) {
         setContentPane(tablePanel);
         pack();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
         setSize(800, 300);
 
@@ -33,7 +33,6 @@ public class SearchTable extends JFrame{
         //Quit application when user closes window, otherwise app keeps running
         //Sometimes this is what you want, sometimes it isn't.
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         closeButton.addActionListener(new ActionListener() {
             @Override
