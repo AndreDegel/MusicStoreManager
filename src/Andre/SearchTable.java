@@ -99,7 +99,6 @@ class SearchDataModel extends AbstractTableModel {
     @Override
     public String getColumnName(int col){
         //Get from ResultSet metadata, which contains the database column names
-        //TODO translate DB column names into something nicer for display, so "YEAR_RELEASED" becomes "Year Released"
         try {
             return resultSet.getMetaData().getColumnName(col + 1);
         } catch (SQLException se) {

@@ -11,7 +11,7 @@ public class Main {
 
         }
         catch (Exception ex){
-            System.out.println(ex);
+            System.out.println("Could not get a connection to the database. Resolve before continue");
         }
     }
 }

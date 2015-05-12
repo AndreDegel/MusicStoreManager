@@ -61,19 +61,6 @@ public class DatabaseController {
         System.out.println("Successfully Connected");
     }
 
-    public void createTable(){
-        try {
-            stmt = conn.createStatement();
-            stmt.executeUpdate("CREATE Table BOB (id INT)");
-            System.out.println("There is BOB");
-
-
-
-        }
-        catch (Exception ex) {
-            System.out.println("HERE" + ex);
-        }
-    }
 
     public ResultSet selectAllAlbums() {
         try {
@@ -81,8 +68,8 @@ public class DatabaseController {
             rs = stmt.executeQuery("SELECT * FROM albums");
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for all albums" + sqex);
             return null;
         }
     }
@@ -93,8 +80,8 @@ public class DatabaseController {
             rs = stmt.executeQuery("SELECT * FROM consignor");
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for all consignors" + sqex);
             return null;
         }
     }
@@ -105,8 +92,8 @@ public class DatabaseController {
             rs = stmt.executeQuery("SELECT * FROM albums WHERE inBasement = 1");
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for all albums in the basement" + sqex);
             return null;
         }
     }
@@ -119,8 +106,8 @@ public class DatabaseController {
             rs = ps.executeQuery();
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for the searched consignor" + sqex);
             return null;
         }
     }
@@ -133,8 +120,8 @@ public class DatabaseController {
             rs = ps.executeQuery();
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for the searched albums" + sqex);
             return null;
         }
     }
@@ -147,8 +134,8 @@ public class DatabaseController {
             rs = ps.executeQuery();
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for the searched albums" + sqex);
             return null;
         }
     }
@@ -161,8 +148,8 @@ public class DatabaseController {
             rs = ps.executeQuery();
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for the searched consignor" + sqex);
             return null;
         }
     }
@@ -175,8 +162,8 @@ public class DatabaseController {
             rs = ps.executeQuery();
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for the searched consignor" + sqex);
             return null;
         }
     }
@@ -189,8 +176,8 @@ public class DatabaseController {
             rs = ps.executeQuery();
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for searched albums" + sqex);
             return null;
         }
     }
@@ -203,8 +190,8 @@ public class DatabaseController {
             rs = ps.executeQuery();
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for the searched albums" + sqex);
             return null;
         }
     }
@@ -217,8 +204,8 @@ public class DatabaseController {
             rs = ps.executeQuery();
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for the searched albums" + sqex);
             return null;
         }
     }
@@ -238,8 +225,8 @@ public class DatabaseController {
             x = ps.execute();
             return x;       //returns false
         }
-        catch (SQLException e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or insert data into the database the consignor" + sqex);
             return x;
         }
     }
@@ -250,8 +237,8 @@ public class DatabaseController {
             rs = stmt.executeQuery("SELECT * FROM albums WHERE receivedDate < CURDATE() - 30 AND inBasement = 0");
             return rs;
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or get data from the database for the basement dues" + sqex);
             return null;
         }
     }
@@ -261,8 +248,8 @@ public class DatabaseController {
             stmt = conn.createStatement();
             stmt.executeUpdate("UPDATE albums SET inBasement = 1 WHERE receivedDate < CURDATE() - 30 AND inBasement = 0");
         }
-        catch (Exception e){
-            System.out.println(e);
+        catch (SQLException sqex){
+            System.out.println("Could not connect or update data into the database for the albums going into the basement" + sqex);
         }
     }
 
