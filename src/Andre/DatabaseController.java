@@ -244,4 +244,26 @@ public class DatabaseController {
         }
     }
 
+    public ResultSet basementDue() {
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM albums WHERE receivedDate < CURDATE() - 30 AND inBasement = 0");
+            return rs;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public void toBasement() {
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate("UPDATE albums SET inBasement = 1 WHERE receivedDate < CURDATE() - 30 AND inBasement = 0");
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
 }
