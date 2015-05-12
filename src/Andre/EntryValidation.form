@@ -79,28 +79,6 @@
           <visible value="false"/>
         </properties>
       </component>
-      <component id="27e7" class="javax.swing.JLabel" binding="label7">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <enabled value="true"/>
-          <text value="Label"/>
-          <visible value="false"/>
-        </properties>
-      </component>
-      <component id="e97b1" class="javax.swing.JLabel" binding="label8">
-        <constraints>
-          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <enabled value="true"/>
-          <text value="Label"/>
-          <visible value="false"/>
-        </properties>
-      </component>
       <component id="c1799" class="javax.swing.JTextField" binding="textField1" default-binding="true">
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -173,33 +151,9 @@
           <visible value="false"/>
         </properties>
       </component>
-      <component id="79fd9" class="javax.swing.JTextField" binding="textField7">
-        <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <enabled value="true"/>
-          <visible value="false"/>
-        </properties>
-      </component>
-      <component id="29c23" class="javax.swing.JTextField" binding="textField8">
-        <constraints>
-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <enabled value="true"/>
-          <visible value="false"/>
-        </properties>
-      </component>
       <component id="ffb91" class="javax.swing.JButton" binding="okButton">
         <constraints>
-          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -208,11 +162,30 @@
       </component>
       <component id="3172f" class="javax.swing.JButton" binding="cancelButton">
         <constraints>
-          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <text value="Cancel"/>
+        </properties>
+      </component>
+      <component id="5a0f9" class="javax.swing.JLabel" binding="consignerNr">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Consignor Nr:"/>
+          <visible value="false"/>
+        </properties>
+      </component>
+      <component id="3e88e" class="javax.swing.JComboBox" binding="consignerCombo">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <visible value="false"/>
         </properties>
       </component>
     </children>

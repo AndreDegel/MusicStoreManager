@@ -18,16 +18,14 @@ public class EntryValidation extends JFrame{
     private JLabel label4;
     private JLabel label5;
     private JLabel label6;
-    private JLabel label7;
-    private JLabel label8;
     private JTextField textField4;
     private JTextField textField5;
     private JTextField textField6;
-    private JTextField textField7;
-    private JTextField textField8;
     private JButton okButton;
     private JButton cancelButton;
     private JPanel entryPanel;
+    private JLabel consignerNr;
+    private JComboBox consignerCombo;
 
     private boolean isId;
     private boolean isString;
@@ -136,25 +134,48 @@ public class EntryValidation extends JFrame{
                     String email = textField4.getText();
                     String owned = textField5.getText();
                     String paid = textField6.getText();
+                    int consignor = (Integer) consignerCombo.getSelectedItem();
+                    // reuse getters from consignor input and separate by checking that
+                    // if the 6th text field is used or not
+                    if (!textField6.getText().isEmpty()) {
+                        if (validateString(fName, "First Name", false, false) && validateString(lName, "Last Name", false, false) &&
+                                validateString(phone, "Phone Nr.", true, true) && validateString(email, "E-Mail", true, false) &&
+                                validateFloat(owned) && validateFloat(paid)) {
+                            float own = Float.parseFloat(owned);
+                            float pay = Float.parseFloat(paid);
+                            // if the insertion is successful return the updated consignor list
+                            if (!dbc.addConsignor(fName, lName, phone, email, own, pay)) {
+                                rs = dbc.selectAllConsignors();
+                                openSearch(rs);
+                                clear();
+                            }
+                            //otherwise show an error
+                            else {
+                                JOptionPane.showMessageDialog(null,
+                                        "Sorry but the consignor could not be added",
+                                        "Error", JOptionPane.ERROR_MESSAGE);
+                            }
 
-                    if (validateString(fName, "First Name", false, false) && validateString(lName, "Last Name", false, false) &&
-                            validateString(phone, "Phone Nr.", true, true) && validateString(email, "E-Mail", true, false) &&
-                            validateFloat(owned) && validateFloat(paid)) {
-                        float own = Float.parseFloat(owned);
-                        float pay = Float.parseFloat(paid);
-                        // if the insertion is successful return the updated consignor list
-                        if (!dbc.addConsignor(fName, lName, phone, email, own, pay)) {
-                            rs = dbc.selectAllConsignors();
-                            openSearch(rs);
-                            clear();
-                         }
-                        //otherwise show an error
-                        else {
-                            JOptionPane.showMessageDialog(null,
-                                    "Sorry but the consignor could not be added",
-                                    "Error", JOptionPane.ERROR_MESSAGE);
                         }
-
+                    }
+                    //Validate input for new album
+                    else {
+                        if (validateString(fName, "Artist", false, false) && validateString(lName, "Song", false, false) &&
+                                validateString(phone, "Album", false, false) && validateFloat(email)) {
+                            float price = Float.parseFloat(email);
+                            // if the insertion succeeds return updated album list
+                            if (!dbc.addAlbum(fName, lName, phone, consignor,price)) {
+                                rs = dbc.selectAllAlbums();
+                                openSearch(rs);
+                                clear();
+                            }
+                            //otherwise show an error
+                            else {
+                                JOptionPane.showMessageDialog(null,
+                                        "Sorry but the consignor could not be added",
+                                        "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
                     }
                 }
 
@@ -199,6 +220,30 @@ public class EntryValidation extends JFrame{
         label6.setText("Money Paid");
         label6.setVisible(true);
         textField6.setVisible(true);
+        isInsert = true;
+        setSize(300, 200);
+    }
+    //TODO: automatically assign id, current date, and inBasement
+    // TODO: handle consignor
+    public void entryAlbum() {
+        int consignor = dbc.countConsignors();
+        for (int x = 1; x< consignor +1; x++) {
+            consignerCombo.addItem(x);
+        }
+        label1.setText("Artist");
+        label1.setVisible(true);
+        textField1.setVisible(true);
+        label2.setText("Song");
+        label2.setVisible(true);
+        textField2.setVisible(true);
+        label3.setText("Album");
+        label3.setVisible(true);
+        textField3.setVisible(true);
+        label4.setText("Price");
+        label4.setVisible(true);
+        textField4.setVisible(true);
+        consignerNr.setVisible(true);
+        consignerCombo.setVisible(true);
         isInsert = true;
         setSize(300, 200);
 
@@ -329,7 +374,6 @@ public class EntryValidation extends JFrame{
         textField4.setText("");
         textField5.setText("");
         textField6.setText("");
-        textField7.setText("");
     }
 
 

@@ -52,7 +52,17 @@ public class AddToDatabase extends JFrame{
                 BasementManager bm = new BasementManager(older, newer);
             }
         });
+        addAlbumButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ev = new EntryValidation();
+                ev.entryAlbum();
+            }
+        });
     }
+
+
+
     // Method to update the changing data in the table
     // static so it can be called from the Basement Manager
     public static void updateBasementData() {

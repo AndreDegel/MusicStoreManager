@@ -6,6 +6,10 @@ package Andre;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Date;
 
 /**
  * Created by Andre on 4/30/2015.
@@ -213,7 +217,7 @@ public class DatabaseController {
     public boolean addConsignor(String first, String last, String phone,
                                   String email, float owned, float paid) {
         String addConsignor = "INSERT INTO consignor VALUES (DEFAULT, ?, ?, ?, ?, ?, ?)";
-        boolean x = false;
+        boolean x = true;
         try {
             ps = conn.prepareStatement(addConsignor);
             ps.setString(1, first);        //Search for song directly or everything similar
@@ -226,7 +230,27 @@ public class DatabaseController {
             return x;       //returns false
         }
         catch (SQLException sqex){
-            System.out.println("Could not connect or insert data into the database the consignor" + sqex);
+            System.out.println("Could not connect or insert data into the database for the consignor" + sqex);
+            return x;
+        }
+    }
+    // TODO: Handle consignor, for testing add to consignor 1
+    public boolean addAlbum(String artist, String song, String album, int consignor, float price) {
+        //Set the received date to the current date
+        String addConsignor = "INSERT INTO albums VALUES (DEFAULT, ?, ?, ?, CURDATE(), DEFAULT, ?, ?)";
+        boolean x = true;
+        try {
+            ps = conn.prepareStatement(addConsignor);
+            ps.setString(1, artist);        //Search for song directly or everything similar
+            ps.setString(2, song);
+            ps.setString(3, album);
+            ps.setInt(4, consignor);
+            ps.setFloat(5, price);
+            x = ps.execute();
+            return x;       //returns false
+        }
+        catch (SQLException sqex) {
+            System.out.println("Could not connect or insert data into the database for the album" + sqex);
             return x;
         }
     }
@@ -250,6 +274,25 @@ public class DatabaseController {
         }
         catch (SQLException sqex){
             System.out.println("Could not connect or update data into the database for the albums going into the basement" + sqex);
+        }
+    }
+
+    // method to search the query for the number of consignors in the database
+    public int countConsignors() {
+        String songAlbum = "SELECT count(idConsignor) AS num FROM musicdb.consignor";
+        Integer consignor = 0;
+        try {
+            ps = conn.prepareStatement(songAlbum);
+            rs = ps.executeQuery();
+            //get the resulting count
+            while (rs.next()) {
+                consignor = rs.getInt(1);
+            }
+            return consignor;
+        }
+        catch (SQLException sqex) {
+            System.out.println("Could not connect to the database to retrieve the consigner number" + sqex);
+            return 3;
         }
     }
 
