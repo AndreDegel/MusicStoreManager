@@ -21,6 +21,7 @@ public class AddToDatabase extends JFrame{
     public static ResultSet rs;
     public static SearchDataModel older;
     public static SearchDataModel newer;
+    public static SearchTable st;
 
     public AddToDatabase() {
         super("Add to Database");
@@ -59,6 +60,15 @@ public class AddToDatabase extends JFrame{
                 ev.entryAlbum();
             }
         });
+        updateConsignorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateConsigners();
+                st.setDeleteButtonVisible(true);
+
+
+            }
+        });
     }
 
 
@@ -70,6 +80,12 @@ public class AddToDatabase extends JFrame{
         older = new SearchDataModel(rs);
         rs = dbc.selectAllBasement();
         newer = new SearchDataModel(rs);
+    }
+
+    public static void updateConsigners() {
+        rs = dbc.selectAllConsignors();
+        older = new SearchDataModel(rs);
+        st = new SearchTable(older);
     }
 }
 

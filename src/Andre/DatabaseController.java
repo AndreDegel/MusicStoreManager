@@ -234,7 +234,7 @@ public class DatabaseController {
             return x;
         }
     }
-    // TODO: Handle consignor, for testing add to consignor 1
+
     public boolean addAlbum(String artist, String song, String album, int consignor, float price) {
         //Set the received date to the current date
         String addConsignor = "INSERT INTO albums VALUES (DEFAULT, ?, ?, ?, CURDATE(), DEFAULT, ?, ?)";

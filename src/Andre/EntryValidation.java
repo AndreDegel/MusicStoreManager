@@ -223,8 +223,7 @@ public class EntryValidation extends JFrame{
         isInsert = true;
         setSize(300, 200);
     }
-    //TODO: automatically assign id, current date, and inBasement
-    // TODO: handle consignor
+
     public void entryAlbum() {
         int consignor = dbc.countConsignors();
         for (int x = 1; x< consignor +1; x++) {

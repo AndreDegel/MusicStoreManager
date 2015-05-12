@@ -139,7 +139,7 @@ public class SearchDatabase extends JFrame{
         });
     }
 
-    public void openSearch(ResultSet rst) {
+    public static void openSearch(ResultSet rst) {
         SearchDataModel sdm = new SearchDataModel(rst);
         SearchTable st = new SearchTable(sdm);
     }

@@ -16,8 +16,17 @@ public class SearchTable extends JFrame{
     private JPanel tablePanel;
     private JTable searchTable;
     private JButton closeButton;
+    private JButton deleteButton;
 
-    protected SearchTable(SearchDataModel sdm) {
+    public void setDeleteButtonVisible(boolean deleteButton) {
+        this.deleteButton.setVisible(deleteButton);
+    }
+
+    public JTable getSearchTable() {
+        return searchTable;
+    }
+
+    protected SearchTable(final SearchDataModel sdm) {
         setContentPane(tablePanel);
         pack();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -40,7 +49,22 @@ public class SearchTable extends JFrame{
                 dispose();
             }
         });
-
+        //TODO: not working yet
+        //delete a consignor
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                searchTable = getSearchTable();
+                int currentRow = searchTable.getSelectedRow();
+                boolean delete = sdm.deleteRow(currentRow);
+                if (delete) {
+                    AddToDatabase.updateConsigners();
+                }
+                else {
+                    JOptionPane.showMessageDialog(rootPane, "Error deleting");
+                }
+        }
+        });
     }
 }
 
@@ -106,4 +130,20 @@ class SearchDataModel extends AbstractTableModel {
             return "?";
         }
     }
+
+    //Delete row, return true if successful, false otherwise
+    public boolean deleteRow(int row){
+        try {
+            resultSet.absolute(row + 1);
+            resultSet.deleteRow();
+            //Tell table to redraw itself
+            fireTableDataChanged();
+            return true;
+        }catch (SQLException se) {
+            System.out.println("Delete row error " + se);
+            return false;
+        }
+    }
+
+
 }
