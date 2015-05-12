@@ -24,7 +24,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
       </hspacer>
-      <component id="7c1a7" class="javax.swing.JLabel" binding="Label2">
+      <component id="7c1a7" class="javax.swing.JLabel" binding="label2">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -35,7 +35,7 @@
           <visible value="false"/>
         </properties>
       </component>
-      <component id="d1704" class="javax.swing.JLabel" binding="Label3">
+      <component id="d1704" class="javax.swing.JLabel" binding="label3">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -46,7 +46,7 @@
           <visible value="false"/>
         </properties>
       </component>
-      <component id="1430a" class="javax.swing.JLabel" binding="Label4">
+      <component id="1430a" class="javax.swing.JLabel" binding="label4">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -57,7 +57,7 @@
           <visible value="false"/>
         </properties>
       </component>
-      <component id="131e6" class="javax.swing.JLabel" binding="Label5">
+      <component id="131e6" class="javax.swing.JLabel" binding="label5">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -68,7 +68,7 @@
           <visible value="false"/>
         </properties>
       </component>
-      <component id="ca4f9" class="javax.swing.JLabel" binding="Label6">
+      <component id="ca4f9" class="javax.swing.JLabel" binding="label6">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -79,7 +79,7 @@
           <visible value="false"/>
         </properties>
       </component>
-      <component id="27e7" class="javax.swing.JLabel" binding="Label7">
+      <component id="27e7" class="javax.swing.JLabel" binding="label7">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -90,7 +90,7 @@
           <visible value="false"/>
         </properties>
       </component>
-      <component id="e97b1" class="javax.swing.JLabel" binding="Label8">
+      <component id="e97b1" class="javax.swing.JLabel" binding="label8">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>

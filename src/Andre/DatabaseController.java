@@ -222,4 +222,26 @@ public class DatabaseController {
             return null;
         }
     }
+
+    public boolean addConsignor(String first, String last, String phone,
+                                  String email, float owned, float paid) {
+        String addConsignor = "INSERT INTO consignor VALUES (DEFAULT, ?, ?, ?, ?, ?, ?)";
+        boolean x = false;
+        try {
+            ps = conn.prepareStatement(addConsignor);
+            ps.setString(1, first);        //Search for song directly or everything similar
+            ps.setString(2, last);
+            ps.setString(3, phone);
+            ps.setString(4, email);
+            ps.setFloat(5, owned);
+            ps.setFloat(6, paid);
+            x = ps.execute();
+            return x;       //returns false
+        }
+        catch (SQLException e){
+            System.out.println(e);
+            return x;
+        }
+    }
+
 }

@@ -1,7 +1,6 @@
 package Andre;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +16,9 @@ public class AddToDatabase extends JFrame{
     private JButton updateConsignorButton;
     private JButton updateConsignorButton1;
 
+    public DatabaseController dbc = Main.db;
+    public EntryValidation ev;
+
     public AddToDatabase() {
         super("Add to Database");
         setContentPane(addPanel);
@@ -29,6 +31,15 @@ public class AddToDatabase extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+            }
+        });
+
+        addConsignorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ev = new EntryValidation();
+                ev.entryConsignor();
+
             }
         });
     }
