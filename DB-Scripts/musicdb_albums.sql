@@ -36,7 +36,7 @@ CREATE TABLE `albums` (
   PRIMARY KEY (`idAlbums`),
   KEY `Consignor_idx` (`Consignor`),
   CONSTRAINT `Consignor-Album` FOREIGN KEY (`Consignor`) REFERENCES `consignor` (`idConsignor`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `albums` (
 
 LOCK TABLES `albums` WRITE;
 /*!40000 ALTER TABLE `albums` DISABLE KEYS */;
-INSERT INTO `albums` VALUES (1,'Avicii','Hey Brother','True','2015-05-01','\0',1,8),(2,'Pitbull','Wild Wild Love','Globalization','2015-03-20','',1,1),(3,'Pitbull','International Love','Planet Pit','2015-04-25','\0',1,8),(5,'Luke Bryan','That\'s My Kind Of Night','Crash My Party','2015-04-10','\0',2,5),(6,'Luke Bryan','Crash My Party','Crash My Party','2015-04-01','\0',2,5),(7,'Little Big Town','Pontoon','Tornado','2015-03-12','',2,1),(8,'George Strait','Check Yes or No','Strait out of the box','2015-04-30','\0',2,5),(9,'Rammstein','Sonne','Mutter','2015-05-01','',3,1),(10,'Rammstein','Links 2 3 4','Mutter','2015-05-01','',3,1),(11,'Metallica','St. Anger','St. Anger','2015-05-01','\0',3,4),(12,'Within Temptation','Memories','TheSilent Force','2015-05-01','\0',3,6);
+INSERT INTO `albums` VALUES (1,'Avicii','Hey Brother','True','2015-05-01','\0',1,8),(2,'Pitbull','Wild Wild Love','Globalization','2015-03-20','',1,1),(3,'Pitbull','International Love','Planet Pit','2015-04-25','',1,8),(5,'Luke Bryan','That\'s My Kind Of Night','Crash My Party','2015-04-10','',2,5),(6,'Luke Bryan','Crash My Party','Crash My Party','2015-04-01','',2,5),(7,'Little Big Town','Pontoon','Tornado','2015-03-12','',2,1),(8,'George Strait','Check Yes or No','Strait out of the box','2015-04-30','',2,5),(9,'Rammstein','Sonne','Mutter','2015-05-01','',3,1),(10,'Rammstein','Links 2 3 4','Mutter','2015-05-01','',3,1),(11,'Metallica','St. Anger','St. Anger','2015-05-01','\0',3,4),(12,'Within Temptation','Memories','TheSilent Force','2015-05-01','\0',3,6),(13,'In Extremo','Vollmond','Sieben','2015-05-12','\0',1,5),(17,'Rammstein','America','America','2015-05-12','\0',1,4),(18,'a','a','a','2015-05-12','\0',1,1);
 /*!40000 ALTER TABLE `albums` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-05 16:31:25
+-- Dump completed on 2015-05-12 21:22:35

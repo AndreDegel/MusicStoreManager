@@ -27,9 +27,10 @@ public class EntryValidation extends JFrame{
     private JLabel consignerNr;
     private JComboBox consignerCombo;
 
-    private boolean isId;
-    private boolean isString;
-    private boolean isInsert;
+    private boolean isId = false;
+    private boolean isString = false;
+    private boolean isInsert = false;
+    private boolean isCons = false;
     private SearchDatabase sd;
     protected int ID;
     public boolean basement;
@@ -134,10 +135,9 @@ public class EntryValidation extends JFrame{
                     String email = textField4.getText();
                     String owned = textField5.getText();
                     String paid = textField6.getText();
-                    int consignor = (Integer) consignerCombo.getSelectedItem();
                     // reuse getters from consignor input and separate by checking that
                     // if the 6th text field is used or not
-                    if (!textField6.getText().isEmpty()) {
+                    if (isCons) {
                         if (validateString(fName, "First Name", false, false) && validateString(lName, "Last Name", false, false) &&
                                 validateString(phone, "Phone Nr.", true, true) && validateString(email, "E-Mail", true, false) &&
                                 validateFloat(owned) && validateFloat(paid)) {
@@ -160,6 +160,7 @@ public class EntryValidation extends JFrame{
                     }
                     //Validate input for new album
                     else {
+                        int consignor = (Integer) consignerCombo.getSelectedItem();
                         if (validateString(fName, "Artist", false, false) && validateString(lName, "Song", false, false) &&
                                 validateString(phone, "Album", false, false) && validateFloat(email)) {
                             float price = Float.parseFloat(email);
@@ -221,6 +222,7 @@ public class EntryValidation extends JFrame{
         label6.setVisible(true);
         textField6.setVisible(true);
         isInsert = true;
+        isCons = true;
         setSize(300, 200);
     }
 
